@@ -264,16 +264,3 @@ if __name__ == "__main__":
     print(f"\nInitial cost: £{initial_cost:,.0f}")
     print(f"With optimism bias: £{adjusted:,.0f}")
 ```
-
-4. Click **"Commit new file"**
-
----
-
-## Step 4: Create requirements.txt
-
-1. Click **"Add file"** → **"Create new file"**
-2. Name: `requirements.txt`
-3. Paste:
-```
-numpy>=1.20.0
-pandas>=1.3.0
