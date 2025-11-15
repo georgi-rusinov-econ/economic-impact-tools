@@ -85,8 +85,8 @@ def calculate_discount_factor(year: int, rate_type: str = 'standard') -> float:
     --------
     >>> calculate_discount_factor(0)
     1.0
-    >>> calculate_discount_factor(10)
-    0.7089...
+    >>> round(calculate_discount_factor(10), 4)
+    0.7089
     """
     if year == 0:
         return 1.0
@@ -129,7 +129,7 @@ def calculate_npv_greenbook(
     >>> cash_flows = [-1000000, 200000, 250000, 300000, 350000, 400000]
     >>> npv = calculate_npv_greenbook(cash_flows)
     >>> print(f"NPV: £{npv:,.0f}")
-    NPV: £298,814
+    NPV: £338,991
     """
     if years is None:
         years = list(range(len(cash_flows)))
@@ -176,7 +176,7 @@ def calculate_bcr(
     >>> benefits = [0, 300000, 320000, 340000, 360000]
     >>> bcr = calculate_bcr(costs, benefits)
     >>> print(f"BCR: {bcr:.2f}")
-    BCR: 1.15
+    BCR: 1.02
     """
     if years is None:
         years = list(range(len(costs)))
@@ -252,6 +252,12 @@ if __name__ == "__main__":
     print(f"Cash flows: {cash_flows}")
     print(f"NPV: £{npv:,.0f}")
     
+    # Show discount factors
+    print("\nDiscount factors:")
+    for i in range(6):
+        df = calculate_discount_factor(i)
+        print(f"  Year {i}: {df:.4f}")
+    
     # Example: BCR calculation
     costs = [1000000, 50000, 50000, 50000, 50000]
     benefits = [0, 300000, 320000, 340000, 360000]
@@ -263,4 +269,3 @@ if __name__ == "__main__":
     adjusted = apply_optimism_bias(initial_cost)
     print(f"\nInitial cost: £{initial_cost:,.0f}")
     print(f"With optimism bias: £{adjusted:,.0f}")
-```
